@@ -7,15 +7,9 @@ env:
 
 before_install:
 
-    # Remove MySQL.
-    - sudo apt-get -y purge 'mysql*'
+    - sudo apt-get update -qq
     - sudo apt-get -y autoremove
     - sudo apt-get -y autoclean
-    - sudo rm -rf /var/lib/mysql
-    - sudo truncate -s 0 /var/log/mysql/error.log
-
-    # Make sure everything's up to date.
-    - sudo apt-get update -qq
 
 install:
 
@@ -38,9 +32,8 @@ script:
       && (echo 'Idempotence test: pass' && exit 0)
       || (echo 'Idempotence test: fail' && exit 1)
 
-    # Some MySQL debugging (show all the logs).
+    # Some debugging (show all the logs).
     - "sudo ls -lah /var/log"
-    - "sudo cat /var/log/mysql/error.log"
 
     # FIXME: query local name service
     
