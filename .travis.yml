@@ -4,6 +4,10 @@ python: "2.7"
 
 before_install:
 
+    # remove anything to do with java
+    - sudo apt-get -y purge '*jdk*'
+    - sudo apt-get -y purge '*java*'
+
     - sudo apt-get update
     - sudo apt-get -y upgrade
     - sudo apt-get -y autoremove
