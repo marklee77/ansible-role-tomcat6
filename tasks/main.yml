@@ -1,26 +1,27 @@
 ---
-- name: install dnsmasq packages
+- name: install tomcat6 packages
   apt: 
     pkg: "{{ item }}" 
     state: latest 
     update_cache: yes 
     cache_valid_time: 600
   with_items:
-    - dnsmasq
+    - tomcat6
 
-- name: update /etc/dnsmasq.conf from template
+- name: update /etc/tomcat6/server.xml from template
   template:
-    src: etc/dnsmasq.conf
-    dest: /etc/dnsmasq.conf
+    src: etc/tomcat6/server.xml
+    dest: /etc/tomcat6/server.xml
     owner: root
     group: root
     mode: 0644
-  notify: restart dnsmasq
+  notify:
+    - restart tomcat6
 
-- name: ensure dnsmasq service is started and enabled
+- name: ensure tomcat6 service is started and enabled
   service:
     name: "{{ item }}"
     enabled: yes
     state: started
   with_items:
-    - dnsmasq
+    - tomcat6

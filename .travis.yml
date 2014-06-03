@@ -8,6 +8,7 @@ before_install:
     - sudo apt-get -y upgrade
     - sudo apt-get -y autoremove
     - sudo apt-get -y clean
+    - sudo netstat -plunt
 
 install:
 
@@ -31,4 +32,6 @@ script:
       && (echo 'Idempotence test: pass' && exit 0)
       || (echo 'Idempotence test: fail' && exit 1)
 
-    # FIXME: dns query
+    # Debugging.
+    - sudo cat /var/log/tomcat6/catalina.out
+    - sudo netstat -plunt

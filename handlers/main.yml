@@ -1,5 +1,5 @@
 ---
-- name: restart dnsmasq
+- name: restart tomcat6
   service: 
-    name: dnsmasq
+    name: tomcat6
     state: restarted 
