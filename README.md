@@ -8,7 +8,8 @@ dnsmasq-cache role for Ubuntu.
 Example Playbook
 -------------------------
 
-    - hosts: default
+    - hosts: all
+      sudo: True
       roles:
         - marklee77.dnsmasq-cache
 
