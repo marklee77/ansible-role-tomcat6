@@ -8,13 +8,13 @@
   with_items:
     - tomcat6
 
-- name: update /etc/tomcat6/server.xml from template
-  template:
-    src: etc/tomcat6/server.xml
+- name: ensure that tomcat listens on localhost only to alternative port
+  lineinfile:
     dest: /etc/tomcat6/server.xml
-    owner: root
-    group: root
-    mode: 0644
+    regexp: '^(\s*)<Connector(.*)port="(\d+)"(.*)$'
+    backrefs: yes
+    line: '\1<Connector address="127.0.0.1" port="{{ tomcat6_http_port }}"\4'
+    state: present
   notify:
     - restart tomcat6
 
