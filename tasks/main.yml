@@ -11,9 +11,9 @@
 - name: ensure that tomcat listens on localhost only to alternative port
   lineinfile:
     dest: /etc/tomcat6/server.xml
-    regexp: '^(\s*)<Connector(.*)port="(\d+)"(.*)$'
+    regexp: '(.*)<Connector port="8080"(.*)'
     backrefs: yes
-    line: '\1<Connector address="127.0.0.1" port="{{ tomcat6_http_port }}"\4'
+    line: '\1<Connector address="127.0.0.1" port="{{ tomcat6_http_port }}"\2'
     state: present
   notify:
     - restart tomcat6
