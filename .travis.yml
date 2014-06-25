@@ -8,9 +8,6 @@ before_install:
     - sudo apt-get -y purge '.*jdk.*' '.*java.*' '.*jre.*'
 
     - sudo apt-get update
-    - sudo apt-get -y upgrade
-    - sudo apt-get -y autoremove
-    - sudo apt-get -y clean
     - sudo netstat -plunt
 
 install:
@@ -27,8 +24,10 @@ script:
     # Run the role/playbook with ansible-playbook.
     - ansible-playbook -i travis/inventory site.yml
 
-    # properly idempotence should require no changes, but the travis vm seems to
-    # have trouble seeing that chrony is running...
+    # Rerun the role/playbook with ansible-playbook.
+    - ansible-playbook -i travis/inventory site.yml
+
+    # Idempotence test
     - >
       ansible-playbook -i travis/inventory site.yml
       | grep -q 'changed=0.*failed=0'

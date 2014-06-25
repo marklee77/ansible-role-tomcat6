@@ -8,13 +8,8 @@ tomcat6 role for Ubuntu.
 Role Variables
 --------------
 
-- tomcat6_hostname: tomcat6 hostname. Set to "localhost" by default.
-- tomcat6_server_port: tomcat6 server port. Set to 8005 by default.
-- tomcat6_catalina_address: tomcat6 catalina bind address. Set to 127.0.0.1 by 
-    default.
-- tomcat6_catalina_port: tomcat6 catalina port. Set to 8983 by default.
-- tomcat6_catalina_redirect_port: tomcat6 catalina redirect prot. Set to 8443 by 
-    default.
+- tomcat6_hostname: localhost
+- tomcat6_http_port: 8000
 
 Example Playbook
 -------------------------
