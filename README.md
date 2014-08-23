@@ -1,5 +1,5 @@
 marklee77.tomcat6
-=======================
+=================
 
 [![Build Status](https://travis-ci.org/marklee77/ansible-role-tomcat6.svg?branch=master)](https://travis-ci.org/marklee77/ansible-role-tomcat6)
 
@@ -12,7 +12,7 @@ Role Variables
 - tomcat6_http_port: 8000
 
 Example Playbook
--------------------------
+----------------
 
     - hosts: all
       sudo: True
@@ -27,4 +27,4 @@ GPLv2
 Author Information
 ------------------
 
-http://marklee77.github.io/
+http://stillwell.me
